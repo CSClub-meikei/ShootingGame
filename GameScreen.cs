@@ -19,7 +19,7 @@ namespace ActionGame
         public GameScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
             world = new World(game,this);
-            HP = new progressBar(game, new Rectangle(0, 0, 300,50),game.assets.black,game.assets.barBack,game.assets.bar);
+            HP = new progressBar(game, new Rectangle(0, 0, 500,50),game.assets.black,game.assets.barBack,game.assets.bar);
             HP.MaxValue = 10;
             HP.Value = 10;
         }
