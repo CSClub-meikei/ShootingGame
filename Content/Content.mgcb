@@ -10,7 +10,7 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:..\..\Game1\Content\WpfFontPipeline.dll
+/reference:WpfFontPipeline.dll
 
 #---------------------------------- Content ---------------------------------#
 

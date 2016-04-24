@@ -4,13 +4,13 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/NewSpriteFont.spritefont</File>
-    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/decision27.mp3</File>
-    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/decision23.mp3</File>
-    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/cursor10.mp3</File>
-    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/decision17.mp3</File>
-    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/cursor8.mp3</File>
-    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/shot1.mp3</File>
-    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/bomb1.mp3</File>
+    <File>D:/Documents/GitHub/ShootingGame/Content/NewSpriteFont.spritefont</File>
+    <File>D:/Documents/GitHub/ShootingGame/Content/decision27.mp3</File>
+    <File>D:/Documents/GitHub/ShootingGame/Content/decision23.mp3</File>
+    <File>D:/Documents/GitHub/ShootingGame/Content/cursor10.mp3</File>
+    <File>D:/Documents/GitHub/ShootingGame/Content/decision17.mp3</File>
+    <File>D:/Documents/GitHub/ShootingGame/Content/cursor8.mp3</File>
+    <File>D:/Documents/GitHub/ShootingGame/Content/shot1.mp3</File>
+    <File>D:/Documents/GitHub/ShootingGame/Content/bomb1.mp3</File>
   </SourceFiles>
 </SourceFileCollection>
