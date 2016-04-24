@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/NewSpriteFont.spritefont</File>
+    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/decision27.mp3</File>
+    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/decision23.mp3</File>
+    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/cursor10.mp3</File>
+    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/decision17.mp3</File>
+    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/cursor8.mp3</File>
+    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/shot1.mp3</File>
+    <File>D:/Documents/Visual Studio 2015/Projects/ActionGame/Content/bomb1.mp3</File>
+  </SourceFiles>
+</SourceFileCollection>

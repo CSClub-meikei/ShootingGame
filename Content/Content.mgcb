@@ -1,0 +1,81 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin/$(Platform)
+/intermediateDir:obj/$(Platform)
+/platform:Windows
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+/reference:..\..\Game1\Content\WpfFontPipeline.dll
+
+#---------------------------------- Content ---------------------------------#
+
+#begin NewSpriteFont.spritefont
+/importer:FontDescriptionImporter
+/processor:WpfFontDescriptionProcessor
+/processorParam:HasAsciiCharacters=True
+/processorParam:HasZenkakuLatinLetters=True
+/processorParam:HasSpecialCharacters=True
+/processorParam:HasHiragana=True
+/processorParam:HasKatakana=True
+/processorParam:HasJisKanjiLevel1=True
+/processorParam:HasJisKanjiLevel2=True
+/processorParam:HasGreekLetters=True
+/processorParam:HasCyrillicLetters=True
+/processorParam:HasBoxCharacters=True
+/processorParam:OutlineThickness=0
+/processorParam:OutlineColor=64,64,64,255
+/processorParam:FontColor=255,255,255,255
+/processorParam:UseGradient=False
+/processorParam:GradientBeginColor=64,128,255,255
+/processorParam:GradientEndColor=0,0,128,255
+/processorParam:GradientAngle=90
+/processorParam:TextureFormat=Auto
+/build:NewSpriteFont.spritefont
+
+#begin decision27.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:decision27.mp3
+
+#begin decision23.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:decision23.mp3
+
+#begin cursor10.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:cursor10.mp3
+
+#begin decision17.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:decision17.mp3
+
+#begin cursor8.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:cursor8.mp3
+
+#begin shot1.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:shot1.mp3
+
+#begin bomb1.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:bomb1.mp3
+
