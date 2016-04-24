@@ -18,7 +18,7 @@ namespace ActionGame
 
             this.world = world;
             setLocation(point.X, point.Y);
-            setSize(10, 20);
+            setSize(15, 20);
             velocityY = -0.8f;
         }
         public override void update(float delta)
