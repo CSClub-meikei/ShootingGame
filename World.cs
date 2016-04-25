@@ -13,7 +13,7 @@ namespace ActionGame
     class World
     {
         Game1 game;
-        GameScreen screen;
+        public GameScreen screen;
         public player player;
         public List<enemy> enemys;
         public List<enemy> Renemys;

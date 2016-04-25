@@ -145,3 +145,5 @@ D:\Documents\GitHub\ShootingGame\obj\x86\Release\ActionGame.csproj.GenerateResou
 D:\Documents\GitHub\ShootingGame\bin\Windows\x86\Release\Content\pause.png
 D:\Documents\GitHub\ShootingGame\bin\Windows\x86\Release\Content\bar2.png
 D:\Documents\GitHub\ShootingGame\bin\Windows\x86\Release\Content\bar3.png
+D:\Documents\GitHub\ShootingGame\bin\Windows\x86\Release\Content\go.png
+D:\Documents\GitHub\ShootingGame\bin\Windows\x86\Release\Content\ready.png

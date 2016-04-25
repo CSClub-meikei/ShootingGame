@@ -126,7 +126,7 @@ namespace ActionGame
               
             }
             if (input.onKeyDown(Keys.T)) { screenManager.setScreen(new TitleScreen(this, Content), ScreenAnimation.fadeInOut, 0.2F, 0); FloatScreen.Clear(); }
-            if (input.onKeyDown(Keys.G)) { screenManager.setScreen(new GameScreen(this, Content), ScreenAnimation.fadeInOut, 0.2F, 0); FloatScreen.Clear(); }
+            if (input.onKeyDown(Keys.G)) { FloatScreen.Clear(); screenManager.setScreen(new GameScreen(this, Content), ScreenAnimation.fadeInOut, 0.2F, 0); }
 
             screenManager.update(delta);
 
@@ -147,10 +147,19 @@ namespace ActionGame
             GraphicsDevice.Clear(Color.Black);
 
             if (MainScreen != null) MainScreen.Draw(spriteBatch);
-            foreach (Screen s in FloatScreen)
+            try
             {
-                s.Draw(spriteBatch);
+                foreach (Screen s in FloatScreen)
+                {
+                    s.Draw(spriteBatch);
+                }
             }
+            catch (System.Exception)
+            {
+
+               // throw;
+            }
+           
 
             // if(input.OnMouseDown)
             spriteBatch.Begin(transformMatrix: GetScaleMatrix());

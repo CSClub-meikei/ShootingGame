@@ -33,12 +33,14 @@ namespace ActionGame
         public Texture2D exAnimaton;
         public Texture2D gameBack;
         public Texture2D GameSelect;
+        public Texture2D go;
         public Texture2D titlelogo;
         public Texture2D MachineSelect;
         public Texture2D msgbox;
         public Texture2D player;
         public Texture2D pressSpace;
         public Texture2D pause;
+        public Texture2D ready;
         public Texture2D shot;
         public Texture2D sp1;
         public Texture2D sp2;
@@ -82,11 +84,13 @@ namespace ActionGame
             titlelogo = game.Content.Load<Texture2D>("logo2");
             gameBack = game.Content.Load <Texture2D> ("gameBack");
             GameSelect = game.Content.Load<Texture2D>("GameSelect");
+            go = game.Content.Load<Texture2D>("go");
             MachineSelect = game.Content.Load<Texture2D>("MachineSelect");
             msgbox = game.Content.Load<Texture2D>("msgbox");
             player = game.Content.Load<Texture2D>("player");
             pressSpace = game.Content.Load<Texture2D>("Press space");
             pause = game.Content.Load<Texture2D>("pause");
+            ready= game.Content.Load<Texture2D>("ready");
             shot = game.Content.Load<Texture2D>("shot");
             sp1 = game.Content.Load<Texture2D>("sp1");
             sp2 = game.Content.Load<Texture2D>("sp2");

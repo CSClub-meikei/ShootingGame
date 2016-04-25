@@ -23,7 +23,7 @@ namespace ActionGame
         public float time2;
         int frame = 0;
         float[] tmp;//定義 x,y,w,h, アニメーターレイヤ x,y,w,h,alpha
-        bool isAnimate = false;
+        public bool isAnimate = false;
         bool isAnimatedelay = false;
         float vx = 0;
         float vy = -2;

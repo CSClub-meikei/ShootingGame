@@ -7,12 +7,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActionGame", "ActionGame.cs
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19E96E3D-8887-45AB-B171-9798D15E7AA7}.Debug|x64.ActiveCfg = Debug|x86
+		{19E96E3D-8887-45AB-B171-9798D15E7AA7}.Debug|x64.Build.0 = Debug|x86
 		{19E96E3D-8887-45AB-B171-9798D15E7AA7}.Debug|x86.ActiveCfg = Debug|x86
 		{19E96E3D-8887-45AB-B171-9798D15E7AA7}.Debug|x86.Build.0 = Debug|x86
+		{19E96E3D-8887-45AB-B171-9798D15E7AA7}.Release|x64.ActiveCfg = Release|x64
+		{19E96E3D-8887-45AB-B171-9798D15E7AA7}.Release|x64.Build.0 = Release|x64
 		{19E96E3D-8887-45AB-B171-9798D15E7AA7}.Release|x86.ActiveCfg = Release|x86
 		{19E96E3D-8887-45AB-B171-9798D15E7AA7}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection

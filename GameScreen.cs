@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
+
 namespace ActionGame
 {
     class GameScreen:Screen
@@ -15,12 +16,13 @@ namespace ActionGame
 
         World world;
         public progressBar HP;
+        public TextObject scoreLabel;
         public int Status=PAUSE;
         public const int READY = 0;
         public const int RUNNING = 1;
         public const int PAUSE = 2;
 
-        
+        public int score = 0;
 
         public GameScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
@@ -30,7 +32,9 @@ namespace ActionGame
             HP.Value = 10;
             HP.animationSpeed = 0.5f;
             HP.showSplit = true;
-            
+            scoreLabel = new TextObject(game, game.assets.font, "score : 0",Color.White);
+            scoreLabel.setLocation(1000, 0);
+            game.FloatScreen.Add(new readyScreen(game,Content,this));
         }
         public override void update(float deltaTime)
         {
@@ -60,6 +64,8 @@ namespace ActionGame
         public void  updateUI(float deltaTime)
         {
             HP.update(deltaTime);
+            scoreLabel.text = "score : " + score;
+
         }
         public void updateObject(float deltaTime)
         {
@@ -68,6 +74,7 @@ namespace ActionGame
         public void DrawUI(SpriteBatch batch)
         {
             HP.Draw(batch, 1);
+            scoreLabel.Draw(batch, 1);
         }
         public void DrawObject(SpriteBatch batch)
         {

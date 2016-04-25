@@ -105,8 +105,9 @@ namespace ActionGame
         }
         public void Next(Object sender, EventArgs e)
         {
-            game.screenManager.setScreen(new GameScreen(game, Content), ScreenAnimation.fadeInOut, 1, 1);
             game.FloatScreen.Clear();
+            game.screenManager.setScreen(new GameScreen(game, Content), ScreenAnimation.fadeInOut, 1, 1);
+            
            // game.FloatScreen.Add(new machineSelectScreen(game, Content));
         }
     }

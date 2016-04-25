@@ -60,6 +60,7 @@ namespace ActionGame
             }
             else
             {
+                world.screen.score += 10;
                 HP = 0;
                 bar.setValue(HP);
                 bar.animator[0].start(GameObjectAnimator.fadeInOut, new float[] { 1, 1 });
@@ -74,6 +75,7 @@ namespace ActionGame
         public void die(Object sender, EventArgs e)
         {
             //System.Windows.Forms.MessageBox.Show("die");
+          
             world.Renemys.Add(this);
         }
     }
