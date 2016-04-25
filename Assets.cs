@@ -36,6 +36,7 @@ namespace ActionGame
         public Texture2D msgbox;
         public Texture2D player;
         public Texture2D pressSpace;
+        public Texture2D pause;
         public Texture2D shot;
         public Texture2D sp1;
         public Texture2D sp2;
@@ -81,6 +82,7 @@ namespace ActionGame
             msgbox = game.Content.Load<Texture2D>("msgbox");
             player = game.Content.Load<Texture2D>("player");
             pressSpace = game.Content.Load<Texture2D>("Press space");
+            pause = game.Content.Load<Texture2D>("pause");
             shot = game.Content.Load<Texture2D>("shot");
             sp1 = game.Content.Load<Texture2D>("sp1");
             sp2 = game.Content.Load<Texture2D>("sp2");

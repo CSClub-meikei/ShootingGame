@@ -64,6 +64,7 @@ namespace ActionGame
         }
         public override void update(float deltaTime)
         {
+           
             if (game.input.onKeyDown(Keys.Space) && game.FloatScreen.Count ==0)
             {
                 game.assets.StartSound.Play(1,1,1);

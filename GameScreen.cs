@@ -15,6 +15,12 @@ namespace ActionGame
 
         World world;
         public progressBar HP;
+        public int Status=PAUSE;
+        public const int READY = 0;
+        public const int RUNNING = 1;
+        public const int PAUSE = 2;
+
+        
 
         public GameScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
@@ -22,18 +28,34 @@ namespace ActionGame
             HP = new progressBar(game, new Rectangle(0, 0, 500,50),game.assets.black,game.assets.barBack,game.assets.bar);
             HP.MaxValue = 10;
             HP.Value = 10;
+            HP.animationSpeed = 0.5f;
+            HP.showSplit = true;
+            
         }
         public override void update(float deltaTime)
         {
+           
+            if (game.input.onKeyDown(Keys.Escape))
+            {
+                if (Status == RUNNING) { Status = PAUSE; game.FloatScreen.Add(new pauseScreen(game, Content)); }
+                else if  (Status == PAUSE) { Status = RUNNING; game.FloatScreen.Clear(); }
+            }
+            if (game.input.onKeyDown(Keys.U)) HP.setValue(10);
+                
 
-            updateObject(deltaTime);
-            updateUI(deltaTime);
 
+                if (Status == RUNNING)
+            {
+                updateObject(deltaTime);
+                updateUI(deltaTime);
+            }
         }
         public override void Draw(SpriteBatch batch)
         {
+           
             DrawObject(batch);
             DrawUI(batch);
+            
         }
         public void  updateUI(float deltaTime)
         {

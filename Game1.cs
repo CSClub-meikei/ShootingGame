@@ -132,7 +132,7 @@ namespace ActionGame
 
 
 
-            if (input.onKeyDown(Keys.Escape)) Exit();
+            
             input.update();
 
             base.Update(gameTime);

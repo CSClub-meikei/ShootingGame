@@ -13,8 +13,8 @@ namespace ActionGame
     class progressBar:GraphicalGameObject
     {
 
-        Color[] frameC,backC,barC,bar2C;
-        Texture2D frame, back, bar, bar2;
+        Color[] frameC,backC,barC,bar2C,splitC;
+        Texture2D frame, back, bar, bar2,split;
         public float MaxValue=100;
         public float Value=0;
         float newvalue;
@@ -23,6 +23,9 @@ namespace ActionGame
         public float edge=2;
         public int mode = 0;
         public float animationSpeed=0.8f;
+        public bool showSplit;
+
+
         public progressBar(Game1 game, Rectangle r,Color frameC, Color backC, Color barC, Color bar2C) : base(game, null)
         {
             mode = 0;
@@ -39,6 +42,7 @@ namespace ActionGame
             this.backC[0] = backC;
             this.barC[0] = barC;
             this.bar2C[0] = bar2C;
+            this.splitC[0] = Color.White;
 
             frame = new Texture2D(game.GraphicsDevice, 1, 1);
             frame.SetData<Color>(this.frameC);
@@ -48,7 +52,8 @@ namespace ActionGame
             bar.SetData<Color>(this.barC);
             bar2 = new Texture2D(game.GraphicsDevice, 1, 1);
             bar2.SetData<Color>(this.bar2C);
-
+            split = new Texture2D(game.GraphicsDevice, 1, 1);
+            split.SetData<Color>(this.splitC);
         }
         public progressBar(Game1 game, Rectangle r, Texture2D frame, Texture2D back, Texture2D bar) : base(game, null)
         {
@@ -60,6 +65,11 @@ namespace ActionGame
             this.frame = frame;
             this.back = back;
             this.bar = bar;
+
+            this.splitC = new Color[1 * 1];
+            this.splitC[0] = Color.White;
+            split = new Texture2D(game.GraphicsDevice, 1, 1);
+            split.SetData<Color>(this.splitC);
         }
 
         public override void update(float delta)
@@ -83,7 +93,19 @@ namespace ActionGame
                 batch.Draw(texture :bar, destinationRectangle: new Rectangle((int)(X + edge), (int)(Y + edge), getWidth(), (int)(Height - edge * 2)),sourceRectangle :new Rectangle(0,0,getWidth()*3,200),color:Color.White * alpha);
                 
             }
-           
+
+            
+            if (showSplit)
+            {
+                int i = 0;
+               
+                for (i =1; i <=(int) (getWidth() / ((1 / MaxValue) * Width)) ; i++)
+                {
+                    batch.Draw(split, new Rectangle((int)(X + i * (Width-edge*2) / MaxValue), (int) (Y + edge), 2, (int)(Height - edge * 2)),Color.White*0.5f);
+
+                }
+                
+            }
             batch.End();
         }
         public override void setSize(double w, double h)
@@ -97,15 +119,31 @@ namespace ActionGame
             float res = (float)((Value / MaxValue) * Width - edge * 2);
             if (isAnimating)
             {
-                
-                res -= animationSpeed*Aframe;
-                if ((newvalue / MaxValue) * Width - edge * 2 >= res)
+                if (Value > newvalue)
                 {
-                    isAnimating = false;
-                    Value = newvalue;
-                    res = (float)((Value / MaxValue) * Width - edge * 2);
-                    Aframe = 0;
+                    res -= animationSpeed * Aframe;
+
+                    if ((newvalue / MaxValue) * Width - edge * 2 >= res)
+                    {
+                        isAnimating = false;
+                        Value = newvalue;
+                        res = (float)((Value / MaxValue) * Width - edge * 2);
+                        Aframe = 0;
+                    }
                 }
+                else
+                {
+                    res += animationSpeed * Aframe;
+
+                    if ((newvalue / MaxValue) * Width - edge * 2 <= res)
+                    {
+                        isAnimating = false;
+                        Value = newvalue;
+                        res = (float)((Value / MaxValue) * Width - edge * 2);
+                        Aframe = 0;
+                    }
+                }
+
                 Aframe++;
             }
             return (int)res;

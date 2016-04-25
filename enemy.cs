@@ -29,8 +29,10 @@ namespace ActionGame
             bar = new progressBar(game, new Rectangle((int)X, (int)Y, 100, 20), game.assets.black, game.assets.barBack, game.assets.bar);
             bar.MaxValue = HP;
             bar.Value = HP;
+            
             bar.animationSpeed = 2f;
             bar.addAnimator(1);
+            bar.showSplit = true;
         }
         public override void update(float delta)
         {
