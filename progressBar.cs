@@ -74,7 +74,20 @@ namespace ActionGame
 
         public override void update(float delta)
         {
-            base.update(delta);
+
+            if(getWidth()/Width > 0.6f)
+            {
+                bar = game.assets.bar;
+            }else if (getWidth() / Width < 0.6f && 0.3f < getWidth() / Width)
+            {
+                bar = game.assets.bar2;
+            }
+            else if (getWidth() / Width < 0.3f)
+            {
+                bar = game.assets.bar3;
+            }
+
+                base.update(delta);
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {

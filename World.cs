@@ -49,7 +49,8 @@ namespace ActionGame
                 {
                     Random rnd = new Random();
                     Random rnd2 = new Random();
-                    enemys.Add(new enemy(game, this, new Point(rnd.Next(0, 1200), rnd2.Next(-300,-100))));
+                    Random rnd3 = new Random();
+                    enemys.Add(new enemy(game, this, new Point(rnd.Next(0, 1200), rnd2.Next(-300,-100)),rnd.Next(1,5)));
                 }
             }
           

@@ -17,11 +17,11 @@ namespace ActionGame
         World world;
         progressBar bar;
         public bool isExplosion = false;
-        public int HP=2;
-        public enemy(Game1 game, World world, Point point) : base(game, game.assets.enemy)
+        public int HP=1;
+        public enemy(Game1 game, World world, Point point,int HP) : base(game, game.assets.enemy)
         {
             this.world = world;
-            
+            this.HP = HP;
             setLocation(point.X, point.Y);
             setSize(100,100);
             velocityY = 0.3f;

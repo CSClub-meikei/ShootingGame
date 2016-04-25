@@ -19,6 +19,8 @@ namespace ActionGame
         public Texture2D MSback;
         public Texture2D ball;
         public Texture2D bar;
+        public Texture2D bar2;
+        public Texture2D bar3;
         public Texture2D barBack;
         public Texture2D black;
         public Texture2D block;
@@ -65,6 +67,8 @@ namespace ActionGame
             Blurback = game.Content.Load<Texture2D>("back");
             ball = game.Content.Load<Texture2D>("ball");
             bar = game.Content.Load<Texture2D>("bar");
+            bar2 = game.Content.Load<Texture2D>("bar2");
+            bar3 = game.Content.Load<Texture2D>("bar3");
             barBack = game.Content.Load<Texture2D>("barBack");
             black = game.Content.Load<Texture2D>("black");
             block = game.Content.Load<Texture2D>("block");
