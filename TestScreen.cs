@@ -26,7 +26,7 @@ namespace ActionGame
         {
 
 
-
+            base.update(deltaTime);
 
             player.update(deltaTime);
         }

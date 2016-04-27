@@ -22,6 +22,8 @@ namespace ActionGame
         public const int RUNNING = 1;
         public const int PAUSE = 2;
 
+        Screen black;
+
         public int score = 0;
 
         public GameScreen(Game1 game, ContentManager Content) : base(game, Content)
@@ -35,24 +37,35 @@ namespace ActionGame
             scoreLabel = new TextObject(game, this, game.assets.font, "score : 0",Color.White);
             scoreLabel.setLocation(1000, 0);
             game.FloatScreen.Add(new readyScreen(game,Content,this));
+            black = new blackScreen(game, Content);
+            black.Y = 720;
         }
         public override void update(float deltaTime)
         {
-            
+            base.update(deltaTime);
             if (game.input.onKeyDown(Keys.Escape))
             {
-                if (Status == RUNNING) { Status = PAUSE; game.FloatScreen.Add(new pauseScreen(game, Content)); }
-                else if  (Status == PAUSE) { Status = RUNNING; game.FloatScreen.Clear(); }
+                if (Status == RUNNING) {
+                    Status = PAUSE;
+                    game.FloatScreen.Add(new pauseScreen(game, Content));
+                    animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, -100, 5, 1, 1,1F });
+                    black.animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, 620, 5, 1, 1, 1F });
+                    world.animatorOnly = true; }
+                else if  (Status == PAUSE) {
+                    Status = RUNNING; game.FloatScreen.Clear();
+                    animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, 0, 5, 1, 1, 1F });
+                    black.animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, 720, 5, 1, 1, 1F });
+                    world.animatorOnly = false;
+                }
             }
             if (game.input.onKeyDown(Keys.U)) HP.setValue(10);
                 
 
 
-                if (Status == RUNNING)
-            {
+            
                 updateObject(deltaTime);
                 updateUI(deltaTime);
-            }
+            
         }
         public override void Draw(SpriteBatch batch)
         {
@@ -64,8 +77,9 @@ namespace ActionGame
         public void  updateUI(float deltaTime)
         {
             HP.update(deltaTime);
+            scoreLabel.update(deltaTime);
             scoreLabel.text = "score : " + score;
-
+            black.update(deltaTime);
         }
         public void updateObject(float deltaTime)
         {
@@ -75,6 +89,7 @@ namespace ActionGame
         {
             HP.Draw(batch, 1);
             scoreLabel.Draw(batch, 1);
+            black.Draw(batch);
         }
         public void DrawObject(SpriteBatch batch)
         {

@@ -21,6 +21,8 @@ namespace ActionGame
         public List<shot> Rshots;
         overlapTester lap;
 
+        public bool animatorOnly = false;
+
         public GraphicalGameObject back1, back2; 
 
 

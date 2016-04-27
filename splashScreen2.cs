@@ -28,12 +28,12 @@ namespace ActionGame
 
         public override void update(float deltaTime)
         {
-
+            base.update(deltaTime);
             sp.update(deltaTime);
 
             time += deltaTime/1000;
             Screen ns = new TitleScreen(game, Content);
-            ns.X = 100;
+          
             if (time > 3F) game.screenManager.setScreen(ns,ScreenAnimation.fadeInOut,0.3F,0);
             Console.WriteLine(time);        }
         public override void Draw(SpriteBatch batch)

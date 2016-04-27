@@ -12,8 +12,10 @@ namespace ActionGame
 {
     class gameBack:GraphicalGameObject
     {
+        World world;
         public gameBack(Game1 game,Screen screen, World world, Point point) : base(game,screen, game.assets.gameBack)
         {
+            this.world = world;
             setLocation(point.X, point.Y);
             setSize(1280, 720);
 
@@ -21,6 +23,8 @@ namespace ActionGame
         }
         public override void update(float delta)
         {
+            base.update(delta);
+            if (world.animatorOnly) return;
             Y += velocityY * delta;
             if (Y > 720) Y = -720;
         }

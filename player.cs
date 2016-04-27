@@ -18,15 +18,16 @@ namespace ActionGame
 
         public player(Game1 game,Screen screen ,World world,Point point) : base(game,screen, game.assets.player)
         {
-            X = point.X;
-            Y = point.Y;
+            setLocation(point.X, point.Y);
             Width = 80;
             Height = 120;
             this.world = world;
         }
         public override void update(float delta)
         {
+            base.update(delta);
 
+            if (world.animatorOnly) return;
             if (game.input.onKeyDown(Keys.Right)) isKeyR = true;
             if (game.input.onKeyUp(Keys.Right)) isKeyR = false;
             if (game.input.onKeyDown(Keys.Left)) isKeyL = true;
@@ -50,8 +51,8 @@ namespace ActionGame
             if(!isKeyR && !isKeyL)
             {
                 if (velocityX == 0) { velocityX = 0; }
-                else if (velocityX < 0) { velocityX += 0.2f; }
-                else if (velocityX > 0) { velocityX -= 0.2f; }
+                else if (velocityX < 0) { velocityX += 0.25f; }
+                else if (velocityX > 0) { velocityX -= 0.25f; }
 
             }
            
@@ -72,10 +73,10 @@ namespace ActionGame
                 X = 1180;
             }
             shotTime += delta/1000;
-            if (shotTime >= 0.1f && isSpace) { world.shots.Add(new shot(game, parent, world, new Point((int)X + 75, (int)Y + 50))); shotTime = 0;game.assets.shotSound.Play(0.5f,0,0); }
+            if (shotTime >= 0.1f && isSpace) { world.shots.Add(new shot(game, parent, world, new Point((int)X + 60, (int)Y + 50))); shotTime = 0;game.assets.shotSound.Play(0.5f,0,0); }
 
             Console.WriteLine((velocityX).ToString());
-            base.update(delta);
+            
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {

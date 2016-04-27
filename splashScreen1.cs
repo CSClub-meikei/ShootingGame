@@ -25,7 +25,7 @@ namespace ActionGame
 
         public override void update(float deltaTime)
         {
-
+            base.update(deltaTime);
             sp.update(deltaTime);
 
             time += deltaTime/1000;
@@ -39,5 +39,6 @@ namespace ActionGame
 
 
         }
+        
     }
 }

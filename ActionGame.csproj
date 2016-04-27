@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets.cs" />
     <Compile Include="backScreen.cs" />
+    <Compile Include="blackScreen.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="BrankScreen.cs" />
     <Compile Include="Button.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ScreenAnimation.cs" />
+    <Compile Include="ScreenAnimator.cs" />
     <Compile Include="ScreenManager.cs" />
     <Compile Include="SelectModeScreen.cs" />
     <Compile Include="shot.cs" />

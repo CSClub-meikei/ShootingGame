@@ -65,7 +65,8 @@ namespace ActionGame
         public virtual void setLocation(double x,double y)
         {
             this.X = x;this.Y = y;
-            
+            this.actX = X + parent.X;
+            this.actY = Y + parent.Y;
         }
         /// <summary>
         /// オブジェクトのサイズをセット

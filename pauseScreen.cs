@@ -26,6 +26,7 @@ namespace ActionGame
         }
         public override void update(float deltaTime)
         {
+            base.update(deltaTime);
             back.update(deltaTime);
             pause.update(deltaTime);
             base.update(deltaTime);

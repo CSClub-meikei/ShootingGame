@@ -64,9 +64,11 @@ namespace ActionGame
         }
         public override void update(float deltaTime)
         {
+            base.update(deltaTime);
             if (game.input.onKeyDown(Keys.Escape)) game.Exit();
             if (game.input.onKeyDown(Keys.Space) && game.FloatScreen.Count ==0)
             {
+               
                 game.assets.StartSound.Play(1,1,1);
                 game.screenManager.setScreen(new backScreen(game, Content,0), ScreenAnimation.fadeInOut, 0.5f,1);
                 pressStart.animator[2].stop();

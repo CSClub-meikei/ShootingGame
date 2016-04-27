@@ -128,7 +128,7 @@ namespace ActionGame
             if (input.onKeyDown(Keys.T)) { screenManager.setScreen(new TitleScreen(this, Content), ScreenAnimation.fadeInOut, 0.2F, 0); FloatScreen.Clear(); }
             if (input.onKeyDown(Keys.G)) { FloatScreen.Clear(); screenManager.setScreen(new GameScreen(this, Content), ScreenAnimation.fadeInOut, 0.2F, 0); }
 
-            screenManager.update(delta);
+           screenManager.update(delta);
 
 
 

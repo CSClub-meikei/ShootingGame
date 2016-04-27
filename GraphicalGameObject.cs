@@ -101,7 +101,8 @@ namespace ActionGame
         public override void setLocation(double x, double y)
         {
             this.X = x; this.Y = y;
-
+            this.actX = X + parent.X;
+            this.actY = Y + parent.Y;
         }
         /// <summary>
         /// Objectのサイズをセット

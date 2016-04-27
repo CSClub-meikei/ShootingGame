@@ -29,7 +29,7 @@ namespace ActionGame
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {
             batch.Begin(transformMatrix: game.GetScaleMatrix());
-            batch.DrawString(font, text, new Vector2((float)X,(float)Y), color*screenAlpha);
+            batch.DrawString(font, text, new Vector2((float)actX,(float)actY), color*screenAlpha);
             batch.End();
         }
     }

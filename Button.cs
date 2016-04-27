@@ -25,16 +25,14 @@ namespace ActionGame
         Point textL;
 
         public Button(Game1 game,Screen screen, Point point) : base(game,screen, game.assets.buttonD){
-            X = point.X;
-            Y = point.Y;
+            setLocation(point.X, point.Y);
             font = this.Content.Load<SpriteFont>("Font");
             text = new TextObject(game, parent,font, "button", Color.White);
 
             def = game.assets.buttonD;
             hov = game.assets.buttonH;
             onC = game.assets.buttonC;
-            text.X = point.X;
-            text.Y = point.Y;
+            text.setLocation(point.X, point.Y);
             addAnimator(2);
         }
         public override void update(float delta)
@@ -50,8 +48,9 @@ namespace ActionGame
             }
             if (game.input.IsHover(area) && game.input.OnMouseUp(Input.LeftButton)) { game.assets.ClickSound.Play();if(Click!=null) Click(this, EventArgs.Empty); }
                 base.update(delta);
-            text.X =X+textL.X;
-            text.Y = Y+textL.Y;
+            text.update(delta);
+            text.X =actX+textL.X;
+            text.Y = actY+textL.Y;
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {
