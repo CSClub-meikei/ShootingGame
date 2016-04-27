@@ -35,7 +35,7 @@ namespace ActionGame
         public const int FLASH = 1;//Option 1 表示長さ 2フェードアウト 3非表示長さ 4フェードイン長さ　 5適用レイヤー -1本体 0~アニメーター
         public const int GLOW = 2;//Option 1 動きあり1  2 拡大率 3透明度 4標準長さ  5広がり長さ 6広がり保持時間 7縮まる長さ 
         public const int SLIDE = 3;//Option 1 登場:0 移動:1  (2,3移動先X,Y)  4移動時間(目標) 5アニメーターバッファ適用レイヤー 5加速v 6減速v
-        public const int fadeInOut = 4;//Option  1 0:in 1:out  2長さ
+        public const int fadeInOut = 4;//Option  1 0:in 1:out  2長さ 3limit
         public const int EXPLOSION = 5;
 
         public event EventHandler FinishAnimation;
@@ -341,12 +341,28 @@ namespace ActionGame
             if (option[0] == 0)
             {
                 o.alpha += ((float)deltaTime / 1000) * (1 / option[1]);
-                if (o.alpha == 1) this.stop();
+                if(option.Length == 2)
+                {
+                    if (o.alpha == 1) this.stop();
+                }
+                else if (option.Length == 3)
+                {
+                    if (o.alpha == option[2]) this.stop();
+                }
+               
             }
             else if (option[0] == 1)
             {
                 o.alpha -= ((float)deltaTime / 1000) * (1 / option[1]);
-                if (o.alpha == 0) this.stop();
+                if (option.Length == 2)
+                {
+                    if (o.alpha == 0) this.stop();
+                }
+                else if (option.Length == 3)
+                {
+                    if (o.alpha == option[2]) this.stop();
+                }
+                   
             }
         }
 

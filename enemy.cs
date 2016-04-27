@@ -38,14 +38,17 @@ namespace ActionGame
         {
 
             base.update(delta);
-            if (world.animatorOnly) return;
-            X += velocityX * delta;
-            Y += velocityY * delta;
-            if (Y > 800) world.Renemys.Add(this);
+
+            if (!world.animatorOnly)
+            {
+                X += velocityX * delta;
+                Y += velocityY * delta;
+                if (Y > 800) world.Renemys.Add(this);
+            }
             bar.X = X;
-            bar.Y = Y-50;
+            bar.Y = Y - 50;
             bar.update(delta);
-            
+
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {

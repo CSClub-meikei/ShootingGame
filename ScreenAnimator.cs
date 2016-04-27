@@ -308,12 +308,28 @@ namespace ActionGame
             if (option[0] == 0)
             {
                 screen.screenAlpha += ((float)deltaTime / 1000) * (1 / option[1]);
-                if (screen.screenAlpha == 1) this.stop();
+                if (option.Length == 2)
+                {
+                    if (screen.screenAlpha >= 1) this.stop();
+                }
+                else if (option.Length == 3)
+                {
+                    if (screen.screenAlpha >= option[2]) this.stop();
+                }
+
             }
             else if (option[0] == 1)
             {
                 screen.screenAlpha -= ((float)deltaTime / 1000) * (1 / option[1]);
-                if (screen.screenAlpha == 0) this.stop();
+                if (option.Length == 2)
+                {
+                    if (screen.screenAlpha <= 0) this.stop();
+                }
+                else if (option.Length == 3)
+                {
+                    if (screen.screenAlpha <= option[2]) this.stop();
+                }
+
             }
         }
 

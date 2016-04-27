@@ -24,6 +24,7 @@ namespace ActionGame
         public Texture2D barBack;
         public Texture2D black;
         public Texture2D block;
+        public Texture2D bottomBack;
         public Texture2D buttonC;
         public Texture2D buttonD;
         public Texture2D buttonH;
@@ -74,6 +75,7 @@ namespace ActionGame
             barBack = game.Content.Load<Texture2D>("barBack");
             black = game.Content.Load<Texture2D>("black");
             block = game.Content.Load<Texture2D>("block");
+            bottomBack= game.Content.Load<Texture2D>("bottomBack");
             buttonC = game.Content.Load<Texture2D>("button3C");
             buttonD = game.Content.Load<Texture2D>("button3D");
             buttonH = game.Content.Load<Texture2D>("button3H");

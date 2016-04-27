@@ -23,7 +23,7 @@ namespace ActionGame
         public const int PAUSE = 2;
 
         Screen black;
-
+        pauseScreen ps;
         public int score = 0;
 
         public GameScreen(Game1 game, ContentManager Content) : base(game, Content)
@@ -47,14 +47,24 @@ namespace ActionGame
             {
                 if (Status == RUNNING) {
                     Status = PAUSE;
-                    game.FloatScreen.Add(new pauseScreen(game, Content));
+                  ps = new pauseScreen(game, Content);
+                    ps.screenAlpha =0;
+                    ps.animator.start(ScreenAnimator.fadeInOut, new float[] { 0, 0.2f });
+                    game.FloatScreen.Add(ps);
                     animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, -100, 5, 1, 1,1F });
-                    black.animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, 620, 5, 1, 1, 1F });
+                    //black.animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, 620, 5, 1, 1, 1F });
                     world.animatorOnly = true; }
                 else if  (Status == PAUSE) {
-                    Status = RUNNING; game.FloatScreen.Clear();
+                    ps.animator.start(ScreenAnimator.fadeInOut, new float[] { 1, 0.2f });
+                    EventHandler h;
+                    h = (sender, e) =>
+                    {
+                        game.FloatScreen.Clear();
+                    };
+                    ps.animator.FinishAnimation += h;
+                    Status = RUNNING; 
                     animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, 0, 5, 1, 1, 1F });
-                    black.animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, 720, 5, 1, 1, 1F });
+                   // black.animator.start(ScreenAnimator.SLIDE, new float[] { 2, 340, 720, 5, 1, 1, 1F });
                     world.animatorOnly = false;
                 }
             }

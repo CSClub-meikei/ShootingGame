@@ -95,16 +95,16 @@ namespace ActionGame
             batch.Begin(transformMatrix: game.GetScaleMatrix());
             if (mode == 0)
             {
-                batch.Draw(frame, new Rectangle((int)X, (int)Y, (int)Width, (int)Height), Color.White * alpha);
-                batch.Draw(back, new Rectangle((int)(X + edge), (int)(Y + edge), (int)(Width - edge * 2), (int)(Height - edge * 2)), Color.White*alpha);
-                batch.Draw(bar, new Rectangle((int)(X + edge), (int)(Y + edge), getWidth(), (int)(Height - edge * 2) / 2), Color.White * alpha);
-                batch.Draw(bar2, new Rectangle((int)(X + edge), (int)(Y + edge + (Height - edge * 2) / 2), getWidth(), (int)(Height - edge * 2) / 2), Color.White * alpha);
+                batch.Draw(frame, new Rectangle((int)actX, (int)actY, (int)Width, (int)Height), Color.White * alpha);
+                batch.Draw(back, new Rectangle((int)(actX + edge), (int)(actY + edge), (int)(Width - edge * 2), (int)(Height - edge * 2)), Color.White*alpha);
+                batch.Draw(bar, new Rectangle((int)(actX + edge), (int)(actY + edge), getWidth(), (int)(Height - edge * 2) / 2), Color.White * alpha);
+                batch.Draw(bar2, new Rectangle((int)(actX + edge), (int)(actY + edge + (Height - edge * 2) / 2), getWidth(), (int)(Height - edge * 2) / 2), Color.White * alpha);
             }
             else if (mode == 1)
             {
-                batch.Draw(frame, new Rectangle((int)X, (int)Y, (int)Width, (int)Height), Color.White * alpha);
-                batch.Draw(back, new Rectangle((int)(X + edge), (int)(Y + edge), (int)(Width - edge * 2), (int)(Height - edge * 2)), Color.White * alpha);
-                batch.Draw(texture :bar, destinationRectangle: new Rectangle((int)(X + edge), (int)(Y + edge), getWidth(), (int)(Height - edge * 2)),sourceRectangle :new Rectangle(0,0,getWidth()*3,200),color:Color.White * alpha);
+                batch.Draw(frame, new Rectangle((int)actX, (int)actY, (int)Width, (int)Height), Color.White * alpha);
+                batch.Draw(back, new Rectangle((int)(actX + edge), (int)(actY + edge), (int)(Width - edge * 2), (int)(Height - edge * 2)), Color.White * alpha);
+                batch.Draw(texture :bar, destinationRectangle: new Rectangle((int)(actX + edge), (int)(actY + edge), getWidth(), (int)(Height - edge * 2)),sourceRectangle :new Rectangle(0,0,getWidth()*3,200),color:Color.White * alpha);
                 
             }
 
@@ -115,7 +115,7 @@ namespace ActionGame
                
                 for (i =1; i <=(int) (getWidth() / ((1 / MaxValue) * Width)) ; i++)
                 {
-                    batch.Draw(split, new Rectangle((int)(X + i * (Width-edge*2) / MaxValue), (int) (Y + edge), 2, (int)(Height - edge * 2)),Color.White*0.5f);
+                    batch.Draw(split, new Rectangle((int)(actX + i * (Width-edge*2) / MaxValue), (int) (actY + edge), 2, (int)(Height - edge * 2)),Color.White*0.5f);
 
                 }
                 
