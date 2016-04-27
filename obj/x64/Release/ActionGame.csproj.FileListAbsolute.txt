@@ -1,0 +1,3 @@
+D:\Documents\GitHub\ShootingGame\obj\x64\Release\ActionGame.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\ShootingGame\obj\x64\Release\ActionGame.SizeForm.resources
+D:\Documents\GitHub\ShootingGame\obj\x64\Release\ActionGame.csproj.GenerateResource.Cache

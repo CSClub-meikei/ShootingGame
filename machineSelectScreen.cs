@@ -19,8 +19,8 @@ namespace ActionGame
 
         public machineSelectScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
-            back = new GraphicalGameObject(game, game.assets.topBack);
-            title = new GraphicalGameObject(game, game.assets.MachineSelect);
+            back = new GraphicalGameObject(game, this, game.assets.topBack);
+            title = new GraphicalGameObject(game, this, game.assets.MachineSelect);
             back.setSize(1280, 720);
             title.setLocation(300, 50);
             title.setSize(600, 150);

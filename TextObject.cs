@@ -15,7 +15,7 @@ namespace ActionGame
         protected SpriteFont font;
         public String text;
         public Color color;
-        public TextObject(Game1 game, SpriteFont font, String text,Color color):base(game,null)
+        public TextObject(Game1 game, Screen screen,SpriteFont font, String text,Color color):base(game,screen,null)
         {
             this.font = font;
             this.text = text;

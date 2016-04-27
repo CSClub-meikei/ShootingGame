@@ -26,7 +26,7 @@ namespace ActionGame
         public bool showSplit;
 
 
-        public progressBar(Game1 game, Rectangle r,Color frameC, Color backC, Color barC, Color bar2C) : base(game, null)
+        public progressBar(Game1 game,Screen screen, Rectangle r,Color frameC, Color backC, Color barC, Color bar2C) : base(game,screen, null)
         {
             mode = 0;
             setLocation(r.X, r.Y);
@@ -55,7 +55,7 @@ namespace ActionGame
             split = new Texture2D(game.GraphicsDevice, 1, 1);
             split.SetData<Color>(this.splitC);
         }
-        public progressBar(Game1 game, Rectangle r, Texture2D frame, Texture2D back, Texture2D bar) : base(game, null)
+        public progressBar(Game1 game,Screen screen, Rectangle r, Texture2D frame, Texture2D back, Texture2D bar) : base(game,screen, null)
         {
             mode = 1;
 

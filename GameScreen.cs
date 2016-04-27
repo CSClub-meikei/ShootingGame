@@ -27,18 +27,18 @@ namespace ActionGame
         public GameScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
             world = new World(game,this);
-            HP = new progressBar(game, new Rectangle(0, 0, 500,50),game.assets.black,game.assets.barBack,game.assets.bar);
+            HP = new progressBar(game, this, new Rectangle(0, 0, 500,50),game.assets.black,game.assets.barBack,game.assets.bar);
             HP.MaxValue = 10;
             HP.Value = 10;
             HP.animationSpeed = 0.5f;
             HP.showSplit = true;
-            scoreLabel = new TextObject(game, game.assets.font, "score : 0",Color.White);
+            scoreLabel = new TextObject(game, this, game.assets.font, "score : 0",Color.White);
             scoreLabel.setLocation(1000, 0);
             game.FloatScreen.Add(new readyScreen(game,Content,this));
         }
         public override void update(float deltaTime)
         {
-           
+            
             if (game.input.onKeyDown(Keys.Escape))
             {
                 if (Status == RUNNING) { Status = PAUSE; game.FloatScreen.Add(new pauseScreen(game, Content)); }

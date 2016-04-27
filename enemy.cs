@@ -18,15 +18,15 @@ namespace ActionGame
         progressBar bar;
         public bool isExplosion = false;
         public int HP=1;
-        public enemy(Game1 game, World world, Point point,int HP) : base(game, game.assets.enemy)
+        public enemy(Game1 game,Screen screen, World world, Point point,int HP) : base(game,screen, game.assets.enemy)
         {
             this.world = world;
             this.HP = HP;
             setLocation(point.X, point.Y);
-            setSize(100,100);
+            setSize(80,80);
             velocityY = 0.3f;
             addAnimator(2);
-            bar = new progressBar(game, new Rectangle((int)X, (int)Y, 100, 20), game.assets.black, game.assets.barBack, game.assets.bar);
+            bar = new progressBar(game,parent, new Rectangle((int)X, (int)Y, 100, 20), game.assets.black, game.assets.barBack, game.assets.bar);
             bar.MaxValue = HP;
             bar.Value = HP;
             

@@ -25,10 +25,10 @@ namespace ActionGame
         public TitleScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
             font = this.Content.Load<SpriteFont>("Font");
-            titleLogo = new GraphicalGameObject(this.game, game.assets.titlelogo);
-            pressStart = new GraphicalGameObject(this.game, game.assets.pressSpace);
-            back = new GraphicalGameObject(this.game, game.assets.universe);
-            ver = new TextObject(this.game, font, "build " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString(), Color.White);
+            titleLogo = new GraphicalGameObject(this.game, this, game.assets.titlelogo);
+            pressStart = new GraphicalGameObject(this.game, this, game.assets.pressSpace);
+            back = new GraphicalGameObject(this.game, this, game.assets.universe);
+            ver = new TextObject(this.game, this, font, "build " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString(), Color.White);
             ver.X = 1000;
             ver.Y = 650;
             ver.addAnimator(1);

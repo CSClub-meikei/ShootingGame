@@ -82,7 +82,6 @@
     <Compile Include="machineSelectScreen.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="MsgBox.cs" />
-    <Compile Include="oldPlayer.cs" />
     <Compile Include="overlapTester.cs" />
     <Compile Include="pauseScreen.cs" />
     <Compile Include="player.cs" />

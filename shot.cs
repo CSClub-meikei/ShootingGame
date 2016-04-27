@@ -13,7 +13,7 @@ namespace ActionGame
     class shot:GraphicalGameObject
     {
         World world;
-        public shot(Game1 game, World world,Point point) : base(game, game.assets.shot)
+        public shot(Game1 game,Screen screen, World world,Point point) : base(game, screen,game.assets.shot)
         {
 
             this.world = world;

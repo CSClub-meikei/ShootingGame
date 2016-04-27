@@ -17,10 +17,10 @@ namespace ActionGame
         GraphicalGameObject back;
         public pauseScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
-            pause = new GraphicalGameObject(game, game.assets.pause);
+            pause = new GraphicalGameObject(game, this, game.assets.pause);
             pause.setLocation(490, 280);
             pause.setSize(300, 160);
-            back = new GraphicalGameObject(game, game.assets.black);
+            back = new GraphicalGameObject(game, this, game.assets.black);
             back.setSize(1280, 720);
             back.alpha = 0.5f;
         }

@@ -25,12 +25,12 @@ namespace ActionGame
 
         public SelectModeScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
-            back = new GraphicalGameObject(game, game.assets.MSback);
-            gs = new GraphicalGameObject(game, game.assets.GameSelect);
-            button1 = new Button(game, new Point(1280, 400));
-            button2 = new Button(game, new Point(1280, 600));
-            t1 = new TextObject(game, game.assets.font, "１人で遊ぶシングルモードです\n戦闘機を操作して、敵を倒します。", Color.White);
-            t2 = new TextObject(game, game.assets.font, "２人で遊ぶ対戦モードです\n戦闘機を操作して、対戦相手と対決します。", Color.White);
+            back = new GraphicalGameObject(game, this, game.assets.MSback);
+            gs = new GraphicalGameObject(game, this, game.assets.GameSelect);
+            button1 = new Button(game,this, new Point(1280, 400));
+            button2 = new Button(game, this, new Point(1280, 600));
+            t1 = new TextObject(game, this, game.assets.font, "１人で遊ぶシングルモードです\n戦闘機を操作して、敵を倒します。", Color.White);
+            t2 = new TextObject(game, this, game.assets.font, "２人で遊ぶ対戦モードです\n戦闘機を操作して、対戦相手と対決します。", Color.White);
             t1.setLocation(100, 200);
             t2.setLocation(100, 200);
             back.alpha = 0.1f;

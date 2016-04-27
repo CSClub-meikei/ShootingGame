@@ -16,12 +16,12 @@ namespace ActionGame
         World world;
         float shotTime=0;
 
-        public player(Game1 game,World world,Point point) : base(game, game.assets.player)
+        public player(Game1 game,Screen screen ,World world,Point point) : base(game,screen, game.assets.player)
         {
             X = point.X;
             Y = point.Y;
-            Width = 100;
-            Height = 150;
+            Width = 80;
+            Height = 120;
             this.world = world;
         }
         public override void update(float delta)
@@ -72,7 +72,7 @@ namespace ActionGame
                 X = 1180;
             }
             shotTime += delta/1000;
-            if (shotTime >= 0.1f && isSpace) { world.shots.Add(new shot(game, world, new Point((int)X + 75, (int)Y + 50))); shotTime = 0;game.assets.shotSound.Play(0.5f,0,0); }
+            if (shotTime >= 0.1f && isSpace) { world.shots.Add(new shot(game, parent, world, new Point((int)X + 75, (int)Y + 50))); shotTime = 0;game.assets.shotSound.Play(0.5f,0,0); }
 
             Console.WriteLine((velocityX).ToString());
             base.update(delta);

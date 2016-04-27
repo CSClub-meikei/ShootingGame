@@ -21,16 +21,16 @@ namespace ActionGame
         public readyScreen(Game1 game, ContentManager Content,GameScreen screen) : base(game, Content)
         {
             this.screen = screen;
-            ready = new GraphicalGameObject(game, game.assets.ready);
+            ready = new GraphicalGameObject(game, this, game.assets.ready);
             ready.setLocation(490, 280);
             ready.setSize(300, 160);
-            back = new GraphicalGameObject(game, game.assets.black);
+            back = new GraphicalGameObject(game, this, game.assets.black);
             back.setSize(1280, 720);
             back.alpha = 0.5f;
-            go = new GraphicalGameObject(game, game.assets.go);
+            go = new GraphicalGameObject(game, this, game.assets.go);
             go.setLocation(490, 280);
             go.setSize(300, 160);
-            count = new TextObject(game, game.assets.font, "3", Color.White);
+            count = new TextObject(game, this, game.assets.font, "3", Color.White);
             count.setLocation(490, 280);
             go.addAnimator(6);
         }

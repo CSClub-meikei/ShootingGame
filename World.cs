@@ -28,7 +28,7 @@ namespace ActionGame
         {
             this.game = game;
             this.screen = screen;
-            player = new player(this.game,this, new Point(640,500));
+            player = new player(this.game,screen,this, new Point(600,500));
             enemys = new List<enemy>();
             Renemys = new List<enemy>();
             shots = new List<shot>();
@@ -36,8 +36,8 @@ namespace ActionGame
             lap = new overlapTester();
             player.addAnimator(1);
 
-            back1 = new gameBack(game, this,new Point(0,0));
-            back2 = new gameBack(game, this,new Point(0,-720));
+            back1 = new gameBack(game,screen, this,new Point(0,0));
+            back2 = new gameBack(game, screen,this,new Point(0,-720));
         }
         public void update(float deltaTime)
         {
@@ -50,7 +50,7 @@ namespace ActionGame
                     Random rnd = new Random();
                     Random rnd2 = new Random();
                     Random rnd3 = new Random();
-                    enemys.Add(new enemy(game, this, new Point(rnd.Next(0, 1200), rnd2.Next(-300,-100)),rnd.Next(1,5)));
+                    enemys.Add(new enemy(game,screen, this, new Point(rnd.Next(0, 1200), rnd2.Next(-300,-100)),rnd.Next(1,5)));
                 }
             }
           

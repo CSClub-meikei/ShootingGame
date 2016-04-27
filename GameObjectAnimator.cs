@@ -183,13 +183,13 @@ namespace ActionGame
                     break;
                 case GLOW:
 
-                    batch.Draw(o.Texture, new Rectangle((int)tmp[4], (int)tmp[5], (int)tmp[6], (int)tmp[7]), Color.White * option[2] * screenAlpha * tmp[8]);
+                    batch.Draw(o.Texture, new Rectangle((int)tmp[4]+o.parent.X, (int)tmp[5]+o.parent.Y, (int)tmp[6], (int)tmp[7]), Color.White * option[2] * screenAlpha * tmp[8]);
 
                     break;
                 case EXPLOSION:
 
 
-                    batch.Draw(texture: game.assets.exAnimaton, destinationRectangle: new Rectangle((int)o.X, (int)o.Y, (int)o.Width, (int)o.Height), sourceRectangle: new Rectangle(frame * 96, 0, 96, 96));
+                    batch.Draw(texture: game.assets.exAnimaton, destinationRectangle: new Rectangle((int)o.actX, (int)o.actY, (int)o.Width, (int)o.Height), sourceRectangle: new Rectangle(frame * 96, 0, 96, 96));
 
                     Console.WriteLine("frame=" + frame.ToString());
 

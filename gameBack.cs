@@ -12,7 +12,7 @@ namespace ActionGame
 {
     class gameBack:GraphicalGameObject
     {
-        public gameBack(Game1 game, World world, Point point) : base(game, game.assets.gameBack)
+        public gameBack(Game1 game,Screen screen, World world, Point point) : base(game,screen, game.assets.gameBack)
         {
             setLocation(point.X, point.Y);
             setSize(1280, 720);

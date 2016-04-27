@@ -24,11 +24,11 @@ namespace ActionGame
 
         Point textL;
 
-        public Button(Game1 game, Point point) : base(game, game.assets.buttonD){
+        public Button(Game1 game,Screen screen, Point point) : base(game,screen, game.assets.buttonD){
             X = point.X;
             Y = point.Y;
             font = this.Content.Load<SpriteFont>("Font");
-            text = new TextObject(game, font, "button", Color.White);
+            text = new TextObject(game, parent,font, "button", Color.White);
 
             def = game.assets.buttonD;
             hov = game.assets.buttonH;
