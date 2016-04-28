@@ -59,6 +59,7 @@ namespace ActionGame
             isAnimate = false;
             step = 0;
             c = 0;
+            c2 = 0;
             vx = 0;
             vy = 0;
             if (FinishAnimation != null) FinishAnimation(this, EventArgs.Empty);
@@ -100,6 +101,7 @@ namespace ActionGame
 
                         if (option[1] - tmp[0] > 0) vx = t;
                         if (option[1] - tmp[0] < 0) vx = -t;
+                       // System.Windows.Forms.MessageBox.Show(c.ToString());
                     }
                     else if (option[0] == 2)
                     {

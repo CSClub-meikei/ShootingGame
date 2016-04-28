@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 using System.Collections.Generic;
+using System;
 
 namespace ActionGame
 {
@@ -24,8 +25,8 @@ namespace ActionGame
         public ScreenManager screenManager;
         public Input input;
         public Assets assets;
-
-        
+        public bool isSetting;
+        Screen blackScreen, SettingScreen;
 
         public Game1()
         {
@@ -127,8 +128,39 @@ namespace ActionGame
             }
             if (input.onKeyDown(Keys.T)) { screenManager.setScreen(new TitleScreen(this, Content), ScreenAnimation.fadeInOut, 0.2F, 0); FloatScreen.Clear(); }
             if (input.onKeyDown(Keys.G)) { FloatScreen.Clear(); screenManager.setScreen(new GameScreen(this, Content), ScreenAnimation.fadeInOut, 0.2F, 0); }
+            if (input.onKeyDown(Keys.S)) {
+                if (!isSetting)
+                {
+                    isSetting = true;
+                    MainScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, -300, 0, 0, -1, 2f, 1F });
+                    foreach (Screen s in FloatScreen)
+                    {
+                        s.animator.start(ScreenAnimator.SLIDE, new float[] { 1, -300, 0, 0, -1, 2f, 1F });
+                    }
+                    blackScreen = new blackScreen(this, Content);
+                    blackScreen.animator.start(ScreenAnimator.fadeInOut, new float[] { 0, 0.5f, 0.5f });
+                   
+                    SettingScreen = new SettingScreen(this, Content);
+                    SettingScreen.X = 1280;
+                    SettingScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 700, 0, 0, -1, 2f, 1F });
+                   
+                }else
+                {
+                    blackScreen.animator.start(ScreenAnimator.fadeInOut, new float[] { 1, 0.5f,0 });
+                    MainScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 0, 0, 0, -1, 2f, 1F });
+                    foreach (Screen s in FloatScreen)
+                    {
+                        s.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 0, 0, 0, -1, 2f, 1F });
+                    }
+                    SettingScreen.animator.FinishAnimation += new EventHandler((sender, e) => { SettingScreen = null;blackScreen = null; });
+                    SettingScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 1280, 0, 0, -1, 1f, 1F });
+                    isSetting = false;
+                }
+            }
 
-           screenManager.update(delta);
+            if (blackScreen != null) blackScreen.update(delta);
+            if (SettingScreen != null) SettingScreen.update(delta);
+            screenManager.update(delta);
 
 
 
@@ -136,6 +168,10 @@ namespace ActionGame
             input.update();
 
             base.Update(gameTime);
+        }
+        private  bool FindSettingScreen(Screen s)
+        {
+            return s==SettingScreen;
         }
 
         /// <summary>
@@ -159,8 +195,9 @@ namespace ActionGame
 
                // throw;
             }
-           
 
+            if (blackScreen != null) blackScreen.Draw(spriteBatch);
+            if (SettingScreen != null) SettingScreen.Draw(spriteBatch);
             // if(input.OnMouseDown)
             spriteBatch.Begin(transformMatrix: GetScaleMatrix());
             spriteBatch.Draw(assets.cursor, new Rectangle(input.getPosition().X,input.getPosition().Y, 80, 80), Color.White);
