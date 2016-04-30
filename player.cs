@@ -12,7 +12,7 @@ namespace ActionGame
 {
     class player:GraphicalGameObject
     {
-        public bool isKeyL,isKeyR,isSpace;
+        public bool isKeyL,isKeyR,isKeyU,isKeyD,isSpace;
         World world;
         float shotTime=0;
 
