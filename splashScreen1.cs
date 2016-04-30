@@ -18,14 +18,14 @@ namespace ActionGame
 
         public splashScreen1(Game1 game ,ContentManager Content):base(game,Content)
         {
-            sp = new GraphicalGameObject(this.game, game.assets.sp1);
+            sp = new GraphicalGameObject(this.game, this, game.assets.sp1);
             sp.setSize(1280, 720);
             
         }
 
         public override void update(float deltaTime)
         {
-
+            base.update(deltaTime);
             sp.update(deltaTime);
 
             time += deltaTime/1000;
@@ -39,5 +39,6 @@ namespace ActionGame
 
 
         }
+        
     }
 }

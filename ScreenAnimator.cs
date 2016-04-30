@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
 
-
 namespace ActionGame
 {
-    class GameObjectAnimator
+    public class ScreenAnimator
     {
-        GraphicalGameObject o;
+        Screen screen;
         Game1 game;
         int type;
         float[] option;
@@ -35,14 +33,14 @@ namespace ActionGame
         public const int FLASH = 1;//Option 1 表示長さ 2フェードアウト 3非表示長さ 4フェードイン長さ　 5適用レイヤー -1本体 0~アニメーター
         public const int GLOW = 2;//Option 1 動きあり1  2 拡大率 3透明度 4標準長さ  5広がり長さ 6広がり保持時間 7縮まる長さ 
         public const int SLIDE = 3;//Option 1 登場:0 移動:1  (2,3移動先X,Y)  4移動時間(目標) 5アニメーターバッファ適用レイヤー 5加速v 6減速v
-        public const int fadeInOut = 4;//Option  1 0:in 1:out  2長さ 3limit
+        public const int fadeInOut = 4;//Option  1 0:in 1:out  2長さ
         public const int EXPLOSION = 5;
 
         public event EventHandler FinishAnimation;
 
-        public GameObjectAnimator(GraphicalGameObject o, Game1 game)
+        public ScreenAnimator(Screen o, Game1 game)
         {
-            this.o = o;
+            this.screen = o;
             this.game = game;
         }
         public void start(int type, float[] option)
@@ -61,6 +59,7 @@ namespace ActionGame
             isAnimate = false;
             step = 0;
             c = 0;
+            c2 = 0;
             vx = 0;
             vy = 0;
             if (FinishAnimation != null) FinishAnimation(this, EventArgs.Empty);
@@ -79,7 +78,7 @@ namespace ActionGame
 
                 case GLOW:
 
-                    tmp = new float[] { (float)o.X, (float)o.Y, (float)o.Width, (float)o.Height, (float)o.X, (float)o.Y, (float)o.Width, (float)o.Height, 1F };
+                   // tmp = new float[] { (float)screen.X, (float)screen.Y, (float)screen.Width, (float)screen.Height, (float)screen.X, (float)screen.Y, (float)screen.Width, (float)screen.Height, 1F };
 
                     break;
 
@@ -87,7 +86,7 @@ namespace ActionGame
 
 
                 case SLIDE:
-                    tmp = new float[] { (float)o.X, (float)o.Y, (float)o.Width, (float)o.Height };
+                    tmp = new float[] { (float)screen.X, (float)screen.Y, 0,0 };
                     if (option[0] == 1)
                     {
                         float s = 0;
@@ -102,6 +101,7 @@ namespace ActionGame
 
                         if (option[1] - tmp[0] > 0) vx = t;
                         if (option[1] - tmp[0] < 0) vx = -t;
+                       // System.Windows.Forms.MessageBox.Show(c.ToString());
                     }
                     else if (option[0] == 2)
                     {
@@ -121,9 +121,9 @@ namespace ActionGame
                     }
                     break;
                 case fadeInOut:
-                    if (option[0] == 0) o.alpha = 0;
+                    if (option[0] == 0) screen.screenAlpha = 0;
 
-                    if (option[0] == 1) o.alpha = 1;
+                    if (option[0] == 1) screen.screenAlpha = 1;
                     break;
             }
         }
@@ -149,7 +149,7 @@ namespace ActionGame
             }
             if (!isAnimate) return;
             time2 += deltaTime / 1000;
-            if (limit!=0 && time2 > limit) this.stop();
+            if (limit != 0 && time2 > limit) this.stop();
             switch (type)
             {
                 case FLASH:
@@ -164,40 +164,10 @@ namespace ActionGame
                 case fadeInOut:
                     fade(deltaTime);
                     break;
-                case EXPLOSION:
-                    explosion(deltaTime);
-                    break;
+               
             }
         }
-        public void Draw(SpriteBatch batch, float screenAlpha)
-        {
-
-            if (!isAnimate) return;
-
-            switch (type)
-            {
-                case FLASH:
-
-
-
-                    break;
-                case GLOW:
-
-                    batch.Draw(o.Texture, new Rectangle((int)tmp[4]+o.parent.X, (int)tmp[5]+o.parent.Y, (int)tmp[6], (int)tmp[7]), Color.White * option[2] * screenAlpha * tmp[8]);
-
-                    break;
-                case EXPLOSION:
-
-
-                    batch.Draw(texture: game.assets.exAnimaton, destinationRectangle: new Rectangle((int)o.actX, (int)o.actY, (int)o.Width, (int)o.Height), sourceRectangle: new Rectangle(frame * 96, 0, 96, 96));
-
-                    Console.WriteLine("frame=" + frame.ToString());
-
-
-
-                    break;
-            }
-        }
+       
         private void Flash(double deltaTime)
         {
 
@@ -206,30 +176,30 @@ namespace ActionGame
                 case 0:
 
                     time += (float)deltaTime / 1000;
-                    if (option[4] == -1) { o.alpha = 1F; }
-                    else { o.animator[(int)option[4]].tmp[8] = 1F; }
+                    if (option[4] == -1) { screen.screenAlpha = 1F; }
+                   
                     if (time >= option[0]) { step = 1; time = 0; }
 
                     break;
                 case 1:
                     if (option[1] == 0) { step = 2; }
-                    if (option[4] == -1) { o.alpha -= ((float)deltaTime / 1000) * (1 / option[1]); }
-                    else { o.animator[(int)option[4]].tmp[8] -= ((float)deltaTime / 1000) * (1 / option[1]); }
+                    if (option[4] == -1) { screen.screenAlpha -= ((float)deltaTime / 1000) * (1 / option[1]); }
+                  
                     time += (float)deltaTime / 1000;
                     if (time >= option[1]) { step = 2; time = 0; }
 
                     break;
                 case 2:
                     time += (float)deltaTime / 1000;
-                    if (option[4] == -1) { o.alpha = 0F; }
-                    else { o.animator[(int)option[4]].tmp[8] = 0F; }
+                    if (option[4] == -1) { screen.screenAlpha = 0F; }
+                   
                     if (time >= option[2]) { step = 3; time = 0; }
 
                     break;
                 case 3:
                     if (option[1] == 0) { step = 2; }
-                    if (option[4] == -1) { o.alpha += ((float)deltaTime / 1000) * (1 / option[3]); }
-                    else { o.animator[(int)option[4]].tmp[8] += ((float)deltaTime / 1000) * (1 / option[3]); }
+                    if (option[4] == -1) { screen.screenAlpha += ((float)deltaTime / 1000) * (1 / option[3]); }
+                  
                     time += (float)deltaTime / 1000;
                     if (time >= option[3]) { step = 0; time = 0; }
 
@@ -299,10 +269,9 @@ namespace ActionGame
 
 
                 time += (float)(deltaTime / 1000);
-                o.X = tmp[0] + (option[1] - tmp[0]) / option[3] * time;
-                o.Y = tmp[1] + (option[2] - tmp[1]) / option[3] * time;
-                if (option[4] != -1) o.animator[(int)option[4]].tmp[0] = tmp[0] + (option[1] - tmp[0]) / option[3] * time;
-                if (option[4] != -1) o.animator[(int)option[4]].tmp[1] = tmp[1] + (option[2] - tmp[1]) / option[3] * time;
+                screen.X = (int)(tmp[0] + (option[1] - tmp[0]) / option[3] * time);
+                screen.Y = (int)(tmp[1] + (option[2] - tmp[1]) / option[3] * time);
+                
                 if (time > option[3]) { this.stop(); }
 
 
@@ -314,24 +283,24 @@ namespace ActionGame
 
 
                 time += (float)(deltaTime / 1000);
-                o.X += (vx);
+                screen.X += (int)vx;
                 if (vx > 0) vx -= option[5];
                 if (vx < 0) vx += option[5];
                 c2++;
                 if (c == c2) this.stop();
-                if (option[4] != -1) o.animator[(int)option[4]].tmp[0] = (float)o.X;
+                
 
             }
             else if (option[0] == 2)
             {
                 time += (float)(deltaTime / 1000);
-                o.Y += (vy);
+                screen.Y += (int)vy;
                 if (vy > 0) vy -= option[5];
                 if (vy < 0) vy += option[5];
                 c2++;
                 if (c == c2) this.stop();
-                if (option[4] != -1) o.animator[(int)option[4]].tmp[1] = (float)o.Y;
-                Console.WriteLine("XXXXX:" + o.Y.ToString() + "VX" + vy.ToString());
+              
+                Console.WriteLine("XXXXX:" + screen.Y.ToString() + "VX" + vy.ToString());
             }
 
 
@@ -340,44 +309,31 @@ namespace ActionGame
         {
             if (option[0] == 0)
             {
-                o.alpha += ((float)deltaTime / 1000) * (1 / option[1]);
-                if(option.Length == 2)
+                screen.screenAlpha += ((float)deltaTime / 1000) * (1 / option[1]);
+                if (option.Length == 2)
                 {
-                    if (o.alpha == 1) this.stop();
+                    if (screen.screenAlpha >= 1) this.stop();
                 }
                 else if (option.Length == 3)
                 {
-                    if (o.alpha == option[2]) this.stop();
+                    if (screen.screenAlpha >= option[2]) this.stop();
                 }
-               
+
             }
             else if (option[0] == 1)
             {
-                o.alpha -= ((float)deltaTime / 1000) * (1 / option[1]);
+                screen.screenAlpha -= ((float)deltaTime / 1000) * (1 / option[1]);
                 if (option.Length == 2)
                 {
-                    if (o.alpha == 0) this.stop();
+                    if (screen.screenAlpha <= 0) this.stop();
                 }
                 else if (option.Length == 3)
                 {
-                    if (o.alpha == option[2]) this.stop();
+                    if (screen.screenAlpha <= option[2]) this.stop();
                 }
-                   
+
             }
         }
 
-        public void explosion(float deltaTime)
-        {
-            //System.Windows.Forms.MessageBox.Show("update");
-            o.alpha = 0f;
-            time += deltaTime / 1000;
-            if (time > 0.05f)
-            {
-                frame++;
-                time = 0;
-                
-            }
-            if (frame == 18) { o.alpha = 1f;frame = 0; this.stop(); }
-        }
     }
 }

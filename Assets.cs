@@ -24,6 +24,7 @@ namespace ActionGame
         public Texture2D barBack;
         public Texture2D black;
         public Texture2D block;
+        public Texture2D bottomBack;
         public Texture2D buttonC;
         public Texture2D buttonD;
         public Texture2D buttonH;
@@ -42,6 +43,9 @@ namespace ActionGame
         public Texture2D pause;
         public Texture2D ready;
         public Texture2D shot;
+        public Texture2D sliderBack;
+        public Texture2D sliderBar;
+        public Texture2D sliderCircle;
         public Texture2D sp1;
         public Texture2D sp2;
         public Texture2D topBack;
@@ -74,6 +78,7 @@ namespace ActionGame
             barBack = game.Content.Load<Texture2D>("barBack");
             black = game.Content.Load<Texture2D>("black");
             block = game.Content.Load<Texture2D>("block");
+            bottomBack= game.Content.Load<Texture2D>("bottomBack");
             buttonC = game.Content.Load<Texture2D>("button3C");
             buttonD = game.Content.Load<Texture2D>("button3D");
             buttonH = game.Content.Load<Texture2D>("button3H");
@@ -92,6 +97,9 @@ namespace ActionGame
             pause = game.Content.Load<Texture2D>("pause");
             ready= game.Content.Load<Texture2D>("ready");
             shot = game.Content.Load<Texture2D>("shot");
+            sliderBack= game.Content.Load<Texture2D>("slideBack");
+            sliderBar= game.Content.Load<Texture2D>("slideBar");
+            sliderCircle= game.Content.Load<Texture2D>("slideCircle");
             sp1 = game.Content.Load<Texture2D>("sp1");
             sp2 = game.Content.Load<Texture2D>("sp2");
             topBack = game.Content.Load<Texture2D>("topBack");

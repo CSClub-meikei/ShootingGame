@@ -15,7 +15,7 @@ namespace ActionGame
         protected SpriteFont font;
         public String text;
         public Color color;
-        public TextObject(Game1 game, SpriteFont font, String text,Color color):base(game,null)
+        public TextObject(Game1 game, Screen screen,SpriteFont font, String text,Color color):base(game,screen,null)
         {
             this.font = font;
             this.text = text;
@@ -29,7 +29,7 @@ namespace ActionGame
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {
             batch.Begin(transformMatrix: game.GetScaleMatrix());
-            batch.DrawString(font, text, new Vector2((float)X,(float)Y), color*screenAlpha);
+            batch.DrawString(font, text, new Vector2((float)actX,(float)actY), color*screenAlpha);
             batch.End();
         }
     }

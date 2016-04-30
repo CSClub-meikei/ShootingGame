@@ -20,13 +20,13 @@ namespace ActionGame
         public MsgBox(Game1 game, ContentManager Content) : base(game, Content)
         {
             font = this.Content.Load<SpriteFont>("Font");
-            black = new GraphicalGameObject(game, game.assets.black);
-            text = new TextObject(game, font, "メッセージ\nこんにちは",Color.White);
+            black = new GraphicalGameObject(game, this, game.assets.black);
+            text = new TextObject(game, this, font, "メッセージ\nこんにちは",Color.White);
             text.setLocation(400, 300);
             black.setSize(1280, 720);
             black.alpha = 0.2F;
-            back = new GraphicalGameObject(game, game.assets.msgbox);
-            button = new Button(game, new Point(400, 350));
+            back = new GraphicalGameObject(game, this, game.assets.msgbox);
+            button = new Button(game,this, new Point(400, 350));
             button.setSize(150, 50);
             back.setLocation(340, 210);
                 back.setSize(600, 300);
@@ -37,6 +37,7 @@ namespace ActionGame
         }
         public override void update(float deltaTime)
         {
+            base.update(deltaTime);
             back.update(deltaTime);
             button.update(deltaTime);
             text.update(deltaTime);

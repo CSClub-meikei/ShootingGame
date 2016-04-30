@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets.cs" />
     <Compile Include="backScreen.cs" />
+    <Compile Include="blackScreen.cs" />
     <Compile Include="Block.cs" />
     <Compile Include="BrankScreen.cs" />
     <Compile Include="Button.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="machineSelectScreen.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="MsgBox.cs" />
-    <Compile Include="oldPlayer.cs" />
     <Compile Include="overlapTester.cs" />
     <Compile Include="pauseScreen.cs" />
     <Compile Include="player.cs" />
@@ -91,8 +91,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Screen.cs" />
     <Compile Include="ScreenAnimation.cs" />
+    <Compile Include="ScreenAnimator.cs" />
     <Compile Include="ScreenManager.cs" />
     <Compile Include="SelectModeScreen.cs" />
+    <Compile Include="appSettings.cs" />
+    <Compile Include="SettingData.cs" />
+    <Compile Include="SettingScreen.cs" />
     <Compile Include="shot.cs" />
     <Compile Include="SizeForm.cs">
       <SubType>Form</SubType>
@@ -100,6 +104,7 @@
     <Compile Include="SizeForm.Designer.cs">
       <DependentUpon>SizeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Slider.cs" />
     <Compile Include="splashScreen2.cs" />
     <Compile Include="splashScreen1.cs" />
     <Compile Include="TestScreen.cs" />
@@ -146,6 +151,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\bomb1.mp3" />
+    <Content Include="Content\bottomBack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\button2C.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -231,6 +239,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\shot1.mp3" />
+    <Content Include="Content\slideBack.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\slideBar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\slideCircle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\sp1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

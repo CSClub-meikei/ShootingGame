@@ -24,24 +24,22 @@ namespace ActionGame
 
         Point textL;
 
-        public Button(Game1 game, Point point) : base(game, game.assets.buttonD){
-            X = point.X;
-            Y = point.Y;
+        public Button(Game1 game,Screen screen, Point point) : base(game,screen, game.assets.buttonD){
+            setLocation(point.X, point.Y);
             font = this.Content.Load<SpriteFont>("Font");
-            text = new TextObject(game, font, "button", Color.White);
+            text = new TextObject(game, parent,font, "button", Color.White);
 
             def = game.assets.buttonD;
             hov = game.assets.buttonH;
             onC = game.assets.buttonC;
-            text.X = point.X;
-            text.Y = point.Y;
+            text.setLocation(point.X, point.Y);
             addAnimator(2);
         }
         public override void update(float delta)
         {
             var mouseState = Mouse.GetState();
             var mousePosition = new Point(mouseState.X, mouseState.Y);
-            Rectangle area = new Rectangle((int)X, (int)Y, (int)Width, (int)Height);
+            Rectangle area = new Rectangle((int)actX, (int)actY, (int)Width, (int)Height);
 
             if (game.input.onHover(area)) { game.assets.HoverSound.Play(); Texture = hov;if (Hover != null) Hover(this, EventArgs.Empty); }
             if (game.input.onLeave(area)) Texture = def;
@@ -50,8 +48,10 @@ namespace ActionGame
             }
             if (game.input.IsHover(area) && game.input.OnMouseUp(Input.LeftButton)) { game.assets.ClickSound.Play();if(Click!=null) Click(this, EventArgs.Empty); }
                 base.update(delta);
-            text.X =X+textL.X;
-            text.Y = Y+textL.Y;
+            text.X = X + textL.X;
+            text.Y = Y + textL.Y;
+            text.update(delta);
+            
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {

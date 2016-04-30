@@ -26,7 +26,7 @@ namespace ActionGame
         public bool showSplit;
 
 
-        public progressBar(Game1 game, Rectangle r,Color frameC, Color backC, Color barC, Color bar2C) : base(game, null)
+        public progressBar(Game1 game,Screen screen, Rectangle r,Color frameC, Color backC, Color barC, Color bar2C) : base(game,screen, null)
         {
             mode = 0;
             setLocation(r.X, r.Y);
@@ -55,7 +55,7 @@ namespace ActionGame
             split = new Texture2D(game.GraphicsDevice, 1, 1);
             split.SetData<Color>(this.splitC);
         }
-        public progressBar(Game1 game, Rectangle r, Texture2D frame, Texture2D back, Texture2D bar) : base(game, null)
+        public progressBar(Game1 game,Screen screen, Rectangle r, Texture2D frame, Texture2D back, Texture2D bar) : base(game,screen, null)
         {
             mode = 1;
 
@@ -74,8 +74,9 @@ namespace ActionGame
 
         public override void update(float delta)
         {
+            base.update(delta);
 
-            if(getWidth()/Width > 0.6f)
+            if (getWidth()/Width > 0.6f)
             {
                 bar = game.assets.bar;
             }else if (getWidth() / Width < 0.6f && 0.3f < getWidth() / Width)
@@ -87,23 +88,23 @@ namespace ActionGame
                 bar = game.assets.bar3;
             }
 
-                base.update(delta);
+               
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {
             batch.Begin(transformMatrix: game.GetScaleMatrix());
             if (mode == 0)
             {
-                batch.Draw(frame, new Rectangle((int)X, (int)Y, (int)Width, (int)Height), Color.White * alpha);
-                batch.Draw(back, new Rectangle((int)(X + edge), (int)(Y + edge), (int)(Width - edge * 2), (int)(Height - edge * 2)), Color.White*alpha);
-                batch.Draw(bar, new Rectangle((int)(X + edge), (int)(Y + edge), getWidth(), (int)(Height - edge * 2) / 2), Color.White * alpha);
-                batch.Draw(bar2, new Rectangle((int)(X + edge), (int)(Y + edge + (Height - edge * 2) / 2), getWidth(), (int)(Height - edge * 2) / 2), Color.White * alpha);
+                batch.Draw(frame, new Rectangle((int)actX, (int)actY, (int)Width, (int)Height), Color.White * alpha);
+                batch.Draw(back, new Rectangle((int)(actX + edge), (int)(actY + edge), (int)(Width - edge * 2), (int)(Height - edge * 2)), Color.White*alpha);
+                batch.Draw(bar, new Rectangle((int)(actX + edge), (int)(actY + edge), getWidth(), (int)(Height - edge * 2) / 2), Color.White * alpha);
+                batch.Draw(bar2, new Rectangle((int)(actX + edge), (int)(actY + edge + (Height - edge * 2) / 2), getWidth(), (int)(Height - edge * 2) / 2), Color.White * alpha);
             }
             else if (mode == 1)
             {
-                batch.Draw(frame, new Rectangle((int)X, (int)Y, (int)Width, (int)Height), Color.White * alpha);
-                batch.Draw(back, new Rectangle((int)(X + edge), (int)(Y + edge), (int)(Width - edge * 2), (int)(Height - edge * 2)), Color.White * alpha);
-                batch.Draw(texture :bar, destinationRectangle: new Rectangle((int)(X + edge), (int)(Y + edge), getWidth(), (int)(Height - edge * 2)),sourceRectangle :new Rectangle(0,0,getWidth()*3,200),color:Color.White * alpha);
+                batch.Draw(frame, new Rectangle((int)actX, (int)actY, (int)Width, (int)Height), Color.White * alpha);
+                batch.Draw(back, new Rectangle((int)(actX + edge), (int)(actY + edge), (int)(Width - edge * 2), (int)(Height - edge * 2)), Color.White * alpha);
+                batch.Draw(texture :bar, destinationRectangle: new Rectangle((int)(actX + edge), (int)(actY + edge), getWidth(), (int)(Height - edge * 2)),sourceRectangle :new Rectangle(0,0,getWidth()*3,200),color:Color.White * alpha);
                 
             }
 
@@ -114,7 +115,7 @@ namespace ActionGame
                
                 for (i =1; i <=(int) (getWidth() / ((1 / MaxValue) * Width)) ; i++)
                 {
-                    batch.Draw(split, new Rectangle((int)(X + i * (Width-edge*2) / MaxValue), (int) (Y + edge), 2, (int)(Height - edge * 2)),Color.White*0.5f);
+                    batch.Draw(split, new Rectangle((int)(actX + i * (Width-edge*2) / MaxValue), (int) (actY + edge), 2, (int)(Height - edge * 2)),Color.White*0.5f);
 
                 }
                 

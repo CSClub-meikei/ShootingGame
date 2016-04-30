@@ -25,10 +25,10 @@ namespace ActionGame
         public TitleScreen(Game1 game, ContentManager Content) : base(game, Content)
         {
             font = this.Content.Load<SpriteFont>("Font");
-            titleLogo = new GraphicalGameObject(this.game, game.assets.titlelogo);
-            pressStart = new GraphicalGameObject(this.game, game.assets.pressSpace);
-            back = new GraphicalGameObject(this.game, game.assets.universe);
-            ver = new TextObject(this.game, font, "build " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString(), Color.White);
+            titleLogo = new GraphicalGameObject(this.game, this, game.assets.titlelogo);
+            pressStart = new GraphicalGameObject(this.game, this, game.assets.pressSpace);
+            back = new GraphicalGameObject(this.game, this, game.assets.universe);
+            ver = new TextObject(this.game, this, font, "build " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Build.ToString(), Color.White);
             ver.X = 1000;
             ver.Y = 650;
             ver.addAnimator(1);
@@ -64,9 +64,11 @@ namespace ActionGame
         }
         public override void update(float deltaTime)
         {
+            base.update(deltaTime);
             if (game.input.onKeyDown(Keys.Escape)) game.Exit();
             if (game.input.onKeyDown(Keys.Space) && game.FloatScreen.Count ==0)
             {
+               
                 game.assets.StartSound.Play(1,1,1);
                 game.screenManager.setScreen(new backScreen(game, Content,0), ScreenAnimation.fadeInOut, 0.5f,1);
                 pressStart.animator[2].stop();

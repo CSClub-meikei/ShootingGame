@@ -18,15 +18,15 @@ namespace ActionGame
         progressBar bar;
         public bool isExplosion = false;
         public int HP=1;
-        public enemy(Game1 game, World world, Point point,int HP) : base(game, game.assets.enemy)
+        public enemy(Game1 game,Screen screen, World world, Point point,int HP) : base(game,screen, game.assets.enemy)
         {
             this.world = world;
             this.HP = HP;
             setLocation(point.X, point.Y);
-            setSize(100,100);
+            setSize(80,80);
             velocityY = 0.3f;
             addAnimator(2);
-            bar = new progressBar(game, new Rectangle((int)X, (int)Y, 100, 20), game.assets.black, game.assets.barBack, game.assets.bar);
+            bar = new progressBar(game,parent, new Rectangle((int)X, (int)Y, 100, 20), game.assets.black, game.assets.barBack, game.assets.bar);
             bar.MaxValue = HP;
             bar.Value = HP;
             
@@ -37,13 +37,18 @@ namespace ActionGame
         public override void update(float delta)
         {
 
-            X += velocityX * delta;
-            Y += velocityY * delta;
-            if (Y > 800) world.Renemys.Add(this);
-            bar.X = X;
-            bar.Y = Y-50;
-            bar.update(delta);
             base.update(delta);
+
+            if (!world.animatorOnly)
+            {
+                X += velocityX * delta;
+                Y += velocityY * delta;
+                if (Y > 800) world.Renemys.Add(this);
+            }
+            bar.X = X;
+            bar.Y = Y - 50;
+            bar.update(delta);
+
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {

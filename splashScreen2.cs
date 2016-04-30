@@ -18,7 +18,7 @@ namespace ActionGame
 
         public splashScreen2(Game1 game ,ContentManager Content):base(game,Content)
         {
-            sp = new GraphicalGameObject(this.game, game.assets.sp2);
+            sp = new GraphicalGameObject(this.game, this, game.assets.sp2);
             sp.setSize(1280, 720);
             sp.addAnimator(2);
             sp.animator[0].start(GameObjectAnimator.GLOW, new float[] { 1, 0.5F, 0.5F, 0F, 0.4F, 0.0F, 1F });
@@ -28,11 +28,13 @@ namespace ActionGame
 
         public override void update(float deltaTime)
         {
-
+            base.update(deltaTime);
             sp.update(deltaTime);
 
             time += deltaTime/1000;
-            if (time > 3F) game.screenManager.setScreen(new TitleScreen(game, Content),ScreenAnimation.fadeInOut,0.3F,0);
+            Screen ns = new TitleScreen(game, Content);
+          
+            if (time > 3F) game.screenManager.setScreen(ns,ScreenAnimation.fadeInOut,0.3F,0);
             Console.WriteLine(time);        }
         public override void Draw(SpriteBatch batch)
         {

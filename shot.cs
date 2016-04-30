@@ -13,7 +13,7 @@ namespace ActionGame
     class shot:GraphicalGameObject
     {
         World world;
-        public shot(Game1 game, World world,Point point) : base(game, game.assets.shot)
+        public shot(Game1 game,Screen screen, World world,Point point) : base(game, screen,game.assets.shot)
         {
 
             this.world = world;
@@ -23,9 +23,11 @@ namespace ActionGame
         }
         public override void update(float delta)
         {
+            base.update(delta);
+            if (world.animatorOnly) return;
             Y += velocityY * delta;
             if (Y < -100) world.Rshots.Add(this);
-            base.update(delta);
+            
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {

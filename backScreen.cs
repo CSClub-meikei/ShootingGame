@@ -18,7 +18,7 @@ namespace ActionGame
         GraphicalGameObject back;
         public backScreen(Game1 game, ContentManager Content,int action) : base(game, Content)
         {
-            back = new GraphicalGameObject(game, game.assets.Blurback);
+            back = new GraphicalGameObject(game,this, game.assets.Blurback);
             back.setSize(1280, 720);
             switch (action)
             {
@@ -31,6 +31,7 @@ namespace ActionGame
         }
         public override void update(float deltaTime)
         {
+            base.update(deltaTime);
             back.update(deltaTime);
         }
         public override void Draw(SpriteBatch batch)

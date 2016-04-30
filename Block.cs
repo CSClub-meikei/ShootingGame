@@ -12,7 +12,7 @@ namespace ActionGame
 {
     class Block:GraphicalGameObject
     {
-        public Block(Game1 game,Point point) : base(game,game.assets.block)
+        public Block(Game1 game,Screen screen,Point point) : base(game,screen,game.assets.block)
         {
             setLocation(point.X, point.Y);
             setSize(50, 50);

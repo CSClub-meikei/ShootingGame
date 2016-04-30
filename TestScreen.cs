@@ -12,33 +12,34 @@ namespace ActionGame
 {
     class TestScreen :Screen
     {
-        player player;
-        SpriteFont font;
-        
+
+        Slider slider;
+        GraphicalGameObject back;
+        TextObject text;
 
 
         public TestScreen(Game1 game,ContentManager Content):base (game,Content)
         {
-            font = this.Content.Load<SpriteFont>("font");
-          //  player = new player(this.game);
+            slider = new Slider(game, this, new Point(100, 400));
+            back = new GraphicalGameObject(game, this, game.assets.white);
+            back.setSize(1280, 720);
+            text = new TextObject(game, this, game.assets.font, "", Color.Black);
         }
         public override void update(float deltaTime)
         {
 
-
-
-
-            player.update(deltaTime);
+            slider.update(deltaTime);
+            text.update(deltaTime);
+            base.update(deltaTime);
+            text.text = slider.getValue().ToString();
+           
         }
         public override void Draw(SpriteBatch batch)
         {
 
-            // TODO: Add your drawing code here
-            batch.Begin( transformMatrix: game.GetScaleMatrix());
-            batch.DrawString(font, "座標 : " + ((int)player.X).ToString() + "," + ((int)player.Y).ToString(), Vector2.Zero, Color.Blue*screenAlpha);
-            batch.End();
-            player.Draw(batch, screenAlpha);
-           
+            back.Draw(batch, screenAlpha);
+            slider.Draw(batch, screenAlpha);
+            text.Draw(batch, screenAlpha);
         }
     }
 }
