@@ -26,6 +26,7 @@ namespace ActionGame
         public Input input;
         public Assets assets;
         public bool isSetting;
+        public bool isSettingA;
         Screen blackScreen, SettingScreen;
 
         public Game1()
@@ -94,16 +95,18 @@ namespace ActionGame
             // TODO: Add your update logic here
             float delta = counter.getDeltaTime(gameTime);
             this.Window.Title = "FPS : " + counter.fpsCounter(delta).ToString();
-           try
-           {
-                foreach (Screen s in FloatScreen)
+            if (!isSettingA)
+            {
+                try
                 {
-                    s.update(delta);
+                    foreach (Screen s in FloatScreen)
+                    {
+                        s.update(delta);
+                    }
                 }
-          }
-           catch (System.Exception) { }
-
-            if (MainScreen != null ) MainScreen.update(delta);
+                catch (System.Exception) { }
+            }
+            if (MainScreen != null && !isSettingA ) MainScreen.update(delta);
 
             
           
@@ -132,35 +135,40 @@ namespace ActionGame
                 if (!isSetting)
                 {
                     isSetting = true;
-                    MainScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, -300, 0, 0, -1, 2f, 1F });
+                    MainScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, -300, 0, 0, -1, 2f, 2F });
                     foreach (Screen s in FloatScreen)
                     {
-                        s.animator.start(ScreenAnimator.SLIDE, new float[] { 1, -300, 0, 0, -1, 2f, 1F });
+                        s.animator.start(ScreenAnimator.SLIDE, new float[] { 1, -300, 0, 0, -1, 2f, 2F });
                     }
                     blackScreen = new blackScreen(this, Content);
                     blackScreen.animator.start(ScreenAnimator.fadeInOut, new float[] { 0, 0.5f, 0.5f });
                    
                     SettingScreen = new SettingScreen(this, Content);
                     SettingScreen.X = 1280;
-                    SettingScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 700, 0, 0, -1, 2f, 1F });
+                    EventHandler handler = null;
+                    handler = new EventHandler((sender, e) => { isSettingA = true; SettingScreen.animator.FinishAnimation -= handler; });
+                    SettingScreen.animator.FinishAnimation += handler;
+                    SettingScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 700, 0, 0, -1, 2f, 2F });
                    
                 }else
                 {
+                   
+                    isSettingA = false;
                     blackScreen.animator.start(ScreenAnimator.fadeInOut, new float[] { 1, 0.5f,0 });
-                    MainScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 0, 0, 0, -1, 2f, 1F });
+                    MainScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 0, 0, 0, -1, 2f, 2F });
                     foreach (Screen s in FloatScreen)
                     {
-                        s.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 0, 0, 0, -1, 2f, 1F });
+                        s.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 0, 0, 0, -1, 2f, 2F });
                     }
                     SettingScreen.animator.FinishAnimation += new EventHandler((sender, e) => { SettingScreen = null;blackScreen = null; });
-                    SettingScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 1280, 0, 0, -1, 1f, 1F });
+                    SettingScreen.animator.start(ScreenAnimator.SLIDE, new float[] { 1, 1280, 0, 0, -1, 1f, 2F });
                     isSetting = false;
                 }
             }
 
             if (blackScreen != null) blackScreen.update(delta);
             if (SettingScreen != null) SettingScreen.update(delta);
-            screenManager.update(delta);
+            if(!isSettingA)screenManager.update(delta);
 
 
 

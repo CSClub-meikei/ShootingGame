@@ -39,7 +39,7 @@ namespace ActionGame
         {
             var mouseState = Mouse.GetState();
             var mousePosition = new Point(mouseState.X, mouseState.Y);
-            Rectangle area = new Rectangle((int)X, (int)Y, (int)Width, (int)Height);
+            Rectangle area = new Rectangle((int)actX, (int)actY, (int)Width, (int)Height);
 
             if (game.input.onHover(area)) { game.assets.HoverSound.Play(); Texture = hov;if (Hover != null) Hover(this, EventArgs.Empty); }
             if (game.input.onLeave(area)) Texture = def;
@@ -48,9 +48,10 @@ namespace ActionGame
             }
             if (game.input.IsHover(area) && game.input.OnMouseUp(Input.LeftButton)) { game.assets.ClickSound.Play();if(Click!=null) Click(this, EventArgs.Empty); }
                 base.update(delta);
+            text.X = X + textL.X;
+            text.Y = Y + textL.Y;
             text.update(delta);
-            text.X =actX+textL.X;
-            text.Y = actY+textL.Y;
+            
         }
         public override void Draw(SpriteBatch batch, float screenAlpha)
         {

@@ -19,8 +19,8 @@ namespace ActionGame
         public player(Game1 game,Screen screen ,World world,Point point) : base(game,screen, game.assets.player)
         {
             setLocation(point.X, point.Y);
-            Width = 80;
-            Height = 120;
+            setSize(80, 120);
+            setAngle(45);
             this.world = world;
         }
         public override void update(float delta)

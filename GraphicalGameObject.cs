@@ -120,8 +120,16 @@ namespace ActionGame
         /// <param name="a"></param>
         public void  setAngle(float a)
         {
-            angle = a;
+            angle = dir2Rot(a);
             origin = new Vector2((float)(Texture.Width / 2), (float)(Texture.Height / 2));
+        }
+        private float dir2Rot(double angle)
+        {
+            return (float)(angle / 180 * Math.PI);
+        }
+        private double rot2Dir(float radian)
+        {
+            return (double)(radian * 180 / Math.PI);
         }
     }
     }
